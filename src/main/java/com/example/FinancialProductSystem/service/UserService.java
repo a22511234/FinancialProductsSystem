@@ -46,4 +46,8 @@ public class UserService {
 		return "Scuuess";
 	}
 
+	public Users getoneUser(String userID) {
+		return userRepo.findById(userID).get();
+	}
+
 }

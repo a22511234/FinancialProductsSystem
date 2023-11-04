@@ -34,7 +34,7 @@ public class LikeList {
 	
 	@Column(name="TotalAmount")
 	private double TotalAmount;
-
+	public LikeList(){}
 	public LikeList(String userID, int productID, int orderName, String account, double totalFee, double totalAmount) {
 		super();
 		UserID = userID;

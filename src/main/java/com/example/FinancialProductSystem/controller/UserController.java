@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +19,7 @@ import com.example.FinancialProductSystem.service.UserService;
 
 @RestController
 @RequestMapping("/userapi")
-@CrossOrigin("http://localhost:8081/")
+@CrossOrigin("http://localhost:5173/")
 public class UserController {
 	
 	@Autowired
@@ -29,7 +30,10 @@ public class UserController {
 		List<Users> temps = userService.getAllUsers();
 		return temps;
 	}
-
+	@GetMapping("{userID}")
+	public Users getoneProducts(@PathVariable("userID")String userID) {
+		return userService.getoneUser(userID);
+	}
 	@PostMapping("/save")
 	public String createUser(@RequestBody Users user) {
 		String status = userService.addUser(user);

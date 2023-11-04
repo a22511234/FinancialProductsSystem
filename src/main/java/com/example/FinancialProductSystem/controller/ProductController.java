@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +21,7 @@ import com.example.FinancialProductSystem.service.UserService;
 
 @RestController
 @RequestMapping("/productapi")
-@CrossOrigin("http://localhost:8081/")
+@CrossOrigin("http://localhost:5173/")
 public class ProductController {
 	
 	@Autowired
@@ -33,20 +34,24 @@ public class ProductController {
 	}
 
 	@PostMapping("/save")
-	public String createUser(@RequestBody Product product) {
+	public String createProduct(@RequestBody Product product) {
 		String status = productService.addProduct(product);
 		return status;
 	}
 
 	@PutMapping("/update")
-	public String updatevendor(@RequestBody Product product) {
+	public String updateProduct(@RequestBody Product product) {
 		String status = productService.updateProduct(product);
 		return status;
 	}
 
 	@DeleteMapping("{productID}")
-	public String deletevendor(int productID) {
+	public String deleteProduct(@PathVariable("productID")int productID) {
 		String status = productService.deleteProduct(productID);
 		return status;
+	}
+	@GetMapping("{productID}")
+	public Product getoneProducts(@PathVariable("productID")int productID) {
+		return productService.getoneProduct(productID);
 	}
 }

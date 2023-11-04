@@ -23,6 +23,10 @@ public class ProductService {
 	public List<Product> getAllProducts() {
 		return productRepo.findAll();
 	}
+	
+	public Product getoneProduct(int id) {
+		return productRepo.findById(id).get();
+	}
 
 	@Transactional
 	public String updateProduct(Product product) {
