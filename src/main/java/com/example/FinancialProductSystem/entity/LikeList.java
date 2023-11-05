@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "likelists")
 public class LikeList {
 	
